@@ -1,6 +1,11 @@
 import { Knex } from 'knex'
 import { Store } from '../../../../../../shared/domain/store'
-import { IRepository } from '../../../../../../shared/protocols/repositories/repositories'
+import { Builder, IRepository } from '../../../../../../shared/protocols/repositories/repositories'
+import { addInsert } from '../../utils/sql_builder/addInsert'
+import { addUpdate } from '../../utils/sql_builder/addUpdate'
+import { addWhere } from '../../utils/sql_builder/addWhere'
+import { buildQuery } from '../../utils/sql_builder/buildQuery'
+import { buildQueryFirst } from '../../utils/sql_builder/buildQueryFirst'
 
 export class StoreRepository implements IRepository<Store> {
   private readonly collectionName = 'stores'
@@ -10,25 +15,101 @@ export class StoreRepository implements IRepository<Store> {
     this.db = db
   }
 
-  async findById (params: Store): Promise<Store | undefined> {
-    const store = await this.db(this.collectionName).select<Store[]>().first()
+  async findById (params: Builder<Store> & Store): Promise<Store | undefined> {
+    const stores = await buildQuery(this.db(this.collectionName),
+      addWhere('id', params?.id),
+      addWhere('name', params?.where?.name),
+      addWhere('officialName', params?.where?.officialName),
+      addWhere('socialName', params?.where?.socialName),
+      addWhere('type', params?.where?.type),
+      addWhere('description', params?.where?.description),
+      addWhere('email', params?.where?.email),
+      addWhere('phoneNumber', params?.where?.phoneNumber),
+      addWhere('website', params?.where?.website),
+      addWhere('openDate', params?.where?.openDate),
+      addWhere('closeDate', params?.where?.closeDate),
+      addWhere('keywords', params?.where?.keywords),
+      addWhere('segment', params?.where?.segment),
+      addWhere('cnpj', params?.where?.cnpj),
+      addWhere('imageURL', params?.where?.imageURL),
+      addWhere('createdAt', params?.where?.createdAt),
+      addWhere('updatedAt', params?.where?.updatedAt)
+    )
+    return stores
+  }
+
+  async find (params: Builder<Store> & Store): Promise<Store[]> {
+    const store = await buildQueryFirst(this.db(this.collectionName),
+      addWhere('id', params?.id),
+      addWhere('name', params?.where?.name),
+      addWhere('officialName', params?.where?.officialName),
+      addWhere('socialName', params?.where?.socialName),
+      addWhere('type', params?.where?.type),
+      addWhere('description', params?.where?.description),
+      addWhere('email', params?.where?.email),
+      addWhere('phoneNumber', params?.where?.phoneNumber),
+      addWhere('website', params?.where?.website),
+      addWhere('openDate', params?.where?.openDate),
+      addWhere('closeDate', params?.where?.closeDate),
+      addWhere('keywords', params?.where?.keywords),
+      addWhere('segment', params?.where?.segment),
+      addWhere('cnpj', params?.where?.cnpj),
+      addWhere('imageURL', params?.where?.imageURL),
+      addWhere('createdAt', params?.where?.createdAt),
+      addWhere('updatedAt', params?.where?.updatedAt)
+    )
     return store
   }
 
-  async find (params: Store): Promise<Store[]> {
-    const store = await this.db(this.collectionName).select<Store[]>()
-    return store
+  async update (params: Builder<Store> & Store): Promise<void> {
+    void await buildQuery(this.db(this.collectionName),
+      addUpdate<Store>(params),
+      addWhere('id', params?.id),
+      addWhere('name', params?.where?.name),
+      addWhere('officialName', params?.where?.officialName),
+      addWhere('socialName', params?.where?.socialName),
+      addWhere('type', params?.where?.type),
+      addWhere('description', params?.where?.description),
+      addWhere('email', params?.where?.email),
+      addWhere('phoneNumber', params?.where?.phoneNumber),
+      addWhere('website', params?.where?.website),
+      addWhere('openDate', params?.where?.openDate),
+      addWhere('closeDate', params?.where?.closeDate),
+      addWhere('keywords', params?.where?.keywords),
+      addWhere('segment', params?.where?.segment),
+      addWhere('cnpj', params?.where?.cnpj),
+      addWhere('imageURL', params?.where?.imageURL),
+      addWhere('createdAt', params?.where?.createdAt),
+      addWhere('updatedAt', params?.where?.updatedAt)
+    )
   }
 
-  async update (params: Store): Promise<void> {
-    await this.db(this.collectionName).update<Store>(params).where({ id: params.id })
+  async delete (params: Builder<Store> & Store): Promise<void> {
+    void await buildQuery(this.db(this.collectionName),
+      addUpdate<Store>(params),
+      addWhere('id', params?.id),
+      addWhere('name', params?.where?.name),
+      addWhere('officialName', params?.where?.officialName),
+      addWhere('socialName', params?.where?.socialName),
+      addWhere('type', params?.where?.type),
+      addWhere('description', params?.where?.description),
+      addWhere('email', params?.where?.email),
+      addWhere('phoneNumber', params?.where?.phoneNumber),
+      addWhere('website', params?.where?.website),
+      addWhere('openDate', params?.where?.openDate),
+      addWhere('closeDate', params?.where?.closeDate),
+      addWhere('keywords', params?.where?.keywords),
+      addWhere('segment', params?.where?.segment),
+      addWhere('cnpj', params?.where?.cnpj),
+      addWhere('imageURL', params?.where?.imageURL),
+      addWhere('createdAt', params?.where?.createdAt),
+      addWhere('updatedAt', params?.where?.updatedAt)
+    )
   }
 
-  async delete (params: Store): Promise<void> {
-    await this.db(this.collectionName).delete().where({ id: params.id })
-  }
-
-  async save (params: Store): Promise<void> {
-
+  async save (params: Builder<Store> & Store): Promise<void> {
+    void await buildQuery(this.db(this.collectionName),
+      addInsert<Store>(params)
+    )
   }
 }

@@ -2,7 +2,7 @@ import { Knex } from 'knex'
 
 export function addWhere (
   field: string,
-  value: string | boolean | Date,
+  value?: string | boolean | Date,
   condition = '='
 ): (query: Knex.QueryBuilder) => Knex.QueryBuilder {
   return (query: Knex.QueryBuilder): Knex.QueryBuilder => {
