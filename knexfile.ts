@@ -8,7 +8,8 @@ module.exports = {
       filename: './src/shared/infra/database/dev.sqlite3'
     },
     migrations: {
-      tableName: './src/shared/infra/database/migrations'
+      tableName: 'knex_migrations',
+      directory: 'src/shared/infra/database/migrations'
     },
     useNullAsDefault: true
   },
@@ -25,7 +26,8 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: './src/shared/infra/database/migrations'
+      tableName: 'knex_migrations',
+      directory: './src/shared/infra/database/migrations'
     }
   },
 
