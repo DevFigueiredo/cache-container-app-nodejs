@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "awilix": "^6.0.0",
+    "awilix-express": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "knex": "^0.95.15",
@@ -29,6 +30,6 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts"
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/shared/infra/http/index.ts"
   }
 }

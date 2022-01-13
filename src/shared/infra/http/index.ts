@@ -1,3 +1,3 @@
-import app from './shared/infra/http/server'
+import app from '../../../app/app'
 
 app.listen(4000, () => console.log(`Server started on port ${4000}`))
