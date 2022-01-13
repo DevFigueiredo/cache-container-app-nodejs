@@ -1,6 +1,7 @@
 export interface IRepository<T> {
-  find: (request: Request, response: Response) => Promise<T>
-  update: (request: Request, response: Response) => Promise<void>
-  delete: (request: Request, response: Response) => Promise<void>
-  save: (request: Request, response: Response) => Promise<void>
+  find: (params: T) => Promise<T[] | T>
+  findById: (params: T) => Promise<T | undefined>
+  update: (params: T) => Promise<void>
+  delete: (params: T) => Promise<void>
+  save: (params: T) => Promise<void>
 }
