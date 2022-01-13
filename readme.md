@@ -2,19 +2,19 @@
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
-Criado script de gerenciamento de filas de pilhas em NodeJS para melhor entendimento de performance na aplicação, e estudos em estrutura de dados.
+Criar aplicação backend, utilizando conceitos de clean code e apllicação de alguns conceitos do S.O.L.I.D. Além disto, aplicado pratica em utilização de containerização singleton das classes backend e camada de cache utilizando Redis!
 
 
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] Criar classe para gerenciamento de Filas
-- [x] Pilhas classe para gerenciamento de Pilha
-- [x] Executar script testando registrar no console items de uma Fila usando recursividade
-- [x] Executar script testando registrar no console items de uma Pilha usando recursividade
-- [x] Executar script testando registrar no console items de uma Fila usando uma array e o map
-- [x] Executar script testando registrar no console items de uma Pilha usando uma array e o map
+- [x] Criar CRUD de cadastro de lojas
+- [x] Criar camada de cache utilizando Redis
+- [x] 
+- [x] 
+- [x] 
+- [x] 
 
 
 ## 💻 Pré-requisitos
