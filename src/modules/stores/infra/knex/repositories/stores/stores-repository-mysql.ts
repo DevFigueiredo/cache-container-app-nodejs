@@ -1,6 +1,7 @@
 import { Knex } from 'knex'
 import { Store } from '../../../../../../shared/domain/store'
 import { Builder, IRepository } from '../../../../../../shared/protocols/repositories/repositories'
+import { addDelete } from '../../utils/sql_builder/addDelete'
 import { addInsert } from '../../utils/sql_builder/addInsert'
 import { addUpdate } from '../../utils/sql_builder/addUpdate'
 import { addWhere } from '../../utils/sql_builder/addWhere'
@@ -15,7 +16,7 @@ export class StoreRepository implements IRepository<Store> {
     this.db = db
   }
 
-  async findById (params: Builder<Store>): Promise<Store | undefined> {
+  async findById (params: Builder<Store>): Promise<Store> {
     const stores = await buildQuery(this.db(this.collectionName),
       addWhere('id', params?.where?.id),
       addWhere('name', params?.where?.name),
@@ -84,10 +85,10 @@ export class StoreRepository implements IRepository<Store> {
     )
   }
 
-  async delete (params: Builder<Store> & Store): Promise<void> {
+  async delete (params: Builder<Store>): Promise<void> {
     void await buildQuery(this.db(this.collectionName),
-      addUpdate<Store>(params),
-      addWhere('id', params?.id),
+      addDelete(),
+      addWhere('id', params?.where?.id),
       addWhere('name', params?.where?.name),
       addWhere('officialName', params?.where?.officialName),
       addWhere('socialName', params?.where?.socialName),
