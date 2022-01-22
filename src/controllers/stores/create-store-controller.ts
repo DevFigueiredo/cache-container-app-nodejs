@@ -1,17 +1,17 @@
 import { Request, Response } from 'express'
 import { Store } from '../../shared/domain/store'
 import { HttpStatusHelper } from '../../shared/helpers/http-status-helper'
-import { IUseCase } from '../../shared/protocols/useCases/useCases'
+import { IUseCase } from '../../shared/protocols/useCases/use-cases'
 
-export class StoreController {
-  private readonly saveStoresUseCase: IUseCase<Store>
+export class CreateStoreController {
+  private readonly saveStoresUseCase: IUseCase<Store, void>
   constructor ({ saveStoresUseCase }: any) {
     this.saveStoresUseCase = saveStoresUseCase
   }
 
   async execute (request: Request, response: Response): Promise<Response> {
     const body = request.body
-    const store = await this.saveStoresUseCase.execute(body)
-    return response.status(HttpStatusHelper.Created).json(store)
+    await this.saveStoresUseCase.execute(body)
+    return response.status(HttpStatusHelper.Created).end()
   }
 }

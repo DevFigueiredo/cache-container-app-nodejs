@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
-import { HttpStatusHelper } from '../../../../helpers/http-status-helper'
 import { ForbiddenError } from '../../../errors/forbidden-error'
 import { InvalidParamError } from '../../../errors/invalid-param-error'
 import { NotFoundError } from '../../../errors/not-found-error'
+import { HttpStatusHelper } from '../../../helpers/http-status-helper'
 
 export async function errorsMiddleware (
   error: Error,

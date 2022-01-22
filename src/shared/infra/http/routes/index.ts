@@ -1,2 +1,2 @@
-import StoreRoutes from './Stores'
+import StoreRoutes from './store-routes'
 export { StoreRoutes }
