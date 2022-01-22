@@ -1,4 +1,4 @@
-import { createContainer, asClass, InjectionMode, asValue } from 'awilix'
+import { createContainer, asClass, asValue } from 'awilix'
 import { CreateStoreController } from '../../controllers/stores/create-store-controller'
 import { StoreRepository } from '../../modules/stores/infra/knex/repositories/stores/stores-repository-mysql'
 import { DeleteStoresUseCase } from '../../modules/stores/useCases/stores/delete-stores-use-cases'
@@ -8,9 +8,6 @@ import { SaveStoresUseCase } from '../../modules/stores/useCases/stores/save-sto
 import { UpdateStoresUseCase } from '../../modules/stores/useCases/stores/update-stores-use-cases'
 import { connectDatabase } from '../infra/database/knex/connect-database'
 
-const container = createContainer({
-  injectionMode: InjectionMode.PROXY
-})
 export const register = {
   // utils
   db: asValue(connectDatabase),
@@ -30,6 +27,6 @@ export const register = {
 
 }
 
-container.register(register)
+const container = createContainer().register(register)
 
 export { container }

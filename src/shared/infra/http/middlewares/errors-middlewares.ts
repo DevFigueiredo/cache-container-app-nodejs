@@ -19,6 +19,6 @@ export async function errorsMiddleware (
   if (error instanceof NotFoundError) {
     return response.status(HttpStatusHelper.NotFound).json({ error: error.message })
   }
-
-  return response.status(HttpStatusHelper.InternalServerError).json({ error: error.message })
+  console.error(error)
+  return response.status(HttpStatusHelper.InternalServerError).json({ error: 'Ocorreu um erro interno' })
 }
