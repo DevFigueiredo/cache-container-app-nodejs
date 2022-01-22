@@ -107,7 +107,7 @@ export class StoreRepository implements IRepository<Store> {
     )
   }
 
-  async save (params: Builder<Store> & Store): Promise<void> {
+  async save (params: Store): Promise<void> {
     void await buildQuery(this.db(this.collectionName),
       addInsert<Store>(params)
     )

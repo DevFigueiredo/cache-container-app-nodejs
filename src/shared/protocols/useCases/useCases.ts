@@ -1,3 +1,3 @@
 export interface IUseCase<T, A> {
-  execute: (params?: T) => Promise<A>
+  execute: (params: T) => Promise<A>
 }
