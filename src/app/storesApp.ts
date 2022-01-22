@@ -5,14 +5,14 @@ import { scopePerRequest } from 'awilix-express'
 import { StoreRoutes } from '../shared/infra/http/routes'
 import { errorsMiddleware } from '../shared/infra/http/middlewares/errors-middlewares'
 import { container } from '../shared/container'
-const app = express()
+const storesApp = express()
 
-app.use(json())
-app.use(cors())
+storesApp.use(json())
+storesApp.use(cors())
 
-app.use(errorsMiddleware)
-app.use(scopePerRequest(container))
+storesApp.use(errorsMiddleware)
+storesApp.use(scopePerRequest(container))
 
-app.use('/stores', StoreRoutes)
+storesApp.use('/stores', StoreRoutes)
 
-export default app
+export default storesApp
