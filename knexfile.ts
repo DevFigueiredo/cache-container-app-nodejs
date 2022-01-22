@@ -5,11 +5,11 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './src/shared/infra/database/dev.sqlite3'
+      filename: './src/shared/infra/database/knex/dev.sqlite3'
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: 'src/shared/infra/database/migrations'
+      directory: 'src/shared/infra/database/knex/migrations'
     },
     useNullAsDefault: true
   },
