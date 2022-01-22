@@ -1,5 +1,6 @@
 {
   "extends": "standard-with-typescript",
+  "ignorePatterns": ["src/shared/infra/database/**"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },

@@ -15,9 +15,9 @@ export class StoreRepository implements IRepository<Store> {
     this.db = db
   }
 
-  async findById (params: Builder<Store> & Store): Promise<Store | undefined> {
+  async findById (params: Builder<Store>): Promise<Store | undefined> {
     const stores = await buildQuery(this.db(this.collectionName),
-      addWhere('id', params?.id),
+      addWhere('id', params?.where?.id),
       addWhere('name', params?.where?.name),
       addWhere('officialName', params?.where?.officialName),
       addWhere('socialName', params?.where?.socialName),
@@ -38,9 +38,9 @@ export class StoreRepository implements IRepository<Store> {
     return stores
   }
 
-  async find (params: Builder<Store> & Store): Promise<Store[]> {
+  async find (params: Builder<Store>): Promise<Store[]> {
     const store = await buildQueryFirst(this.db(this.collectionName),
-      addWhere('id', params?.id),
+      addWhere('id', params?.where?.id),
       addWhere('name', params?.where?.name),
       addWhere('officialName', params?.where?.officialName),
       addWhere('socialName', params?.where?.socialName),
