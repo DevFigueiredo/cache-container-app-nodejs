@@ -1,10 +1,10 @@
-export interface Builder<T> {
-  where: T
+export interface Builder<Entity> {
+  where?: Partial<Entity>
 }
-export interface IRepository<T> {
-  find: (params: Builder<T>) => Promise<T[]>
-  findById: (params: Builder<T>) => Promise<T | undefined>
-  update: (params: Builder<T> & T) => Promise<void>
-  delete: (params: Builder<T> & T) => Promise<void>
-  save: (params: T) => Promise<void>
+export interface IRepository<Entity> {
+  find: (params: Builder<Entity>) => Promise<Entity[]>
+  findById: (params: Builder<Entity>) => Promise<Entity | undefined>
+  update: (params: Builder<Entity> & Entity) => Promise<void>
+  delete: (params: Builder<Entity>) => Promise<void>
+  save: (params: Entity) => Promise<void>
 }

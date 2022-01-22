@@ -1,3 +1,3 @@
-export interface IUseCase<T, A> {
-  execute: (params: T) => Promise<A>
+export interface IUseCase<Param, Response> {
+  execute: (params: Param) => Promise<Response>
 }
