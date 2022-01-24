@@ -13,10 +13,7 @@ export class CreateStoreController {
 
   @POST()
   async execute (request: Request, response: Response): Promise<Response> {
-    const body = request.body
-    if (body instanceof Store) {
-      console.log('oi')
-    }
+    const body = request.body as Store
     await this.saveStoresUseCase.execute(body)
     return response.status(HttpStatusHelper.Created).end()
   }
