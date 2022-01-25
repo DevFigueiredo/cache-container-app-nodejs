@@ -6,15 +6,15 @@ import { IUseCase } from '../../shared/protocols/useCases/use-cases'
 
 @route('/stores')
 export class FindStoreController {
-  private readonly findStoresUseCase: IUseCase<Store, Store[]>
+  private readonly findStoresUseCase: IUseCase<undefined, Partial<Store>, Store[]>
   constructor ({ findStoresUseCase }: any) {
     this.findStoresUseCase = findStoresUseCase
   }
 
   @GET()
   async execute (request: Request, response: Response): Promise<Response> {
-    const body = request.query as unknown as Store
-    const store = await this.findStoresUseCase.execute(body)
+    const params = request.query as unknown as Store
+    const store = await this.findStoresUseCase.execute({ params, entity: undefined })
     return response.status(HttpStatusHelper.OK).json(store)
   }
 }

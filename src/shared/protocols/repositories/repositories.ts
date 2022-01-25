@@ -1,10 +1,8 @@
-export interface Builder<Entity> {
-  where?: Partial<Entity>
-}
+import { Builder } from './builder'
+
 export interface IRepository<Entity> {
   find: (params: Builder<Entity>) => Promise<Entity[]>
-  findById: (params: Builder<Entity>) => Promise<Entity>
-  update: (params: Builder<Entity> & Entity) => Promise<void>
+  update: (entity: Entity, params: Builder<Entity>) => Promise<void>
   delete: (params: Builder<Entity>) => Promise<void>
   save: (params: Entity) => Promise<void>
 }

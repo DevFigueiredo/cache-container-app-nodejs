@@ -6,15 +6,15 @@ import { IUseCase } from '../../shared/protocols/useCases/use-cases'
 
 @route('/stores')
 export class CreateStoreController {
-  private readonly deleteStoresUseCase: IUseCase<Store, void>
+  private readonly deleteStoresUseCase: IUseCase<undefined, Partial<Store>, void>
   constructor ({ deleteStoresUseCase }: any) {
     this.deleteStoresUseCase = deleteStoresUseCase
   }
 
   @DELETE()
   async execute (request: Request, response: Response): Promise<Response> {
-    const params = request.query as unknown as Store
-    await this.deleteStoresUseCase.execute(params)
+    const params = request.query as any
+    await this.deleteStoresUseCase.execute({ params, entity: undefined })
     return response.status(HttpStatusHelper.NoContent).end()
   }
 }

@@ -6,15 +6,15 @@ import { IUseCase } from '../../shared/protocols/useCases/use-cases'
 
 @route('/stores')
 export class CreateStoreController {
-  private readonly saveStoresUseCase: IUseCase<Store, void>
+  private readonly saveStoresUseCase: IUseCase<Store, Partial<Store>, void>
   constructor ({ saveStoresUseCase }: any) {
     this.saveStoresUseCase = saveStoresUseCase
   }
 
   @POST()
   async execute (request: Request, response: Response): Promise<Response> {
-    const body = request.body as Store
-    await this.saveStoresUseCase.execute(body)
+    const entity = request.body as Store
+    await this.saveStoresUseCase.execute({ entity })
     return response.status(HttpStatusHelper.Created).end()
   }
 }
