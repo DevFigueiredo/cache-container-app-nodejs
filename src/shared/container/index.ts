@@ -6,6 +6,7 @@ import { FindByIdStoresUseCase } from '../../modules/stores/useCases/stores/find
 import { FindStoresUseCase } from '../../modules/stores/useCases/stores/find-stores-use-cases'
 import { SaveStoresUseCase } from '../../modules/stores/useCases/stores/save-stores-use-cases'
 import { UpdateStoresUseCase } from '../../modules/stores/useCases/stores/update-stores-use-cases'
+import { UploadImage } from '../helpers/upload-image'
 import { connectDatabase } from '../infra/database/knex/connect-database'
 
 export const register = {
@@ -23,7 +24,10 @@ export const register = {
   updateStoresUseCase: asClass(UpdateStoresUseCase).singleton(),
 
   // repositories
-  storeRepository: asClass(StoreRepository).singleton()
+  storeRepository: asClass(StoreRepository).singleton(),
+
+  // helpers
+  uploadImage: asClass(UploadImage).singleton()
 
 }
 

@@ -13,7 +13,8 @@ export class Store {
   keywords!: string
   segment!: string
   cnpj!: string
-  imageURL!: string
+  imageURL?: string
+  imageBase64?: string
   createdAt!: Date
   updatedAt!: Date
 }
