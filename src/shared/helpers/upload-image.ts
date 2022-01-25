@@ -43,7 +43,7 @@ export class UploadImage implements IUploadImage {
       return { type: 'jpg' }
     }
     throw new Error(
-      'A imagem deve obrigatóriamente ter a extensão PNG, JPEG ou JPG'
+      'type imge is not accepted, just send PNG, JPEG ou JPG'
     )
   }
 }
