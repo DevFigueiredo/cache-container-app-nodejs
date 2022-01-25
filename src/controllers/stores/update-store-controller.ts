@@ -11,11 +11,11 @@ export class CreateStoreController {
     this.updateStoresUseCase = updateStoresUseCase
   }
 
+  @route('/:id')
   @PATCH()
   async execute (request: Request, response: Response): Promise<Response<void>> {
-    const params = request.query
     const entity = request.body
-    await this.updateStoresUseCase.execute({ entity, params })
+    await this.updateStoresUseCase.execute({ entity, params: { id: request.params.id } })
     return response.status(HttpStatusHelper.NoContent).end()
   }
 }

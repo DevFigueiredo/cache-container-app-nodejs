@@ -1,4 +1,5 @@
 import { Store } from '../../../../shared/domain/store'
+import { generateUUID } from '../../../../shared/helpers/generateUUID'
 import { IRepository } from '../../../../shared/protocols/repositories/repositories'
 import { IUploadImage } from '../../../../shared/protocols/repositories/uploadImage'
 import { IExecuteUseCase, IUseCase } from '../../../../shared/protocols/useCases/use-cases'
@@ -18,9 +19,10 @@ export class SaveStoresUseCase implements IUseCase<Store, undefined, void> {
 
   private async uploadImageBase64 (entity: Store): Promise<void> {
     if (entity.imageBase64) {
-      const { imageURL } = await this.uploadImage.uploadImageBase64('stores', 'store', entity.imageBase64)
+      const { imageURL } = await this.uploadImage.uploadImageBase64('stores', 'store-', entity.imageBase64)
       entity.imageURL = imageURL
     }
+    entity.id = generateUUID()
     delete entity.imageBase64
   }
 }

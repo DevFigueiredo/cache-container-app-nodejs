@@ -11,6 +11,7 @@ export class FindStoreController {
     this.findByIdStoresUseCase = findByIdStoresUseCase
   }
 
+  @route('/:id')
   @GET()
   async execute (request: Request, response: Response): Promise<Response> {
     const params = request.query as Pick<Store, 'id'>

@@ -7,7 +7,6 @@ import { addInsert } from '../../utils/sql_builder/addInsert'
 import { addUpdate } from '../../utils/sql_builder/addUpdate'
 import { addWhere } from '../../utils/sql_builder/addWhere'
 import { buildQuery } from '../../utils/sql_builder/buildQuery'
-import { buildQueryFirst } from '../../utils/sql_builder/buildQueryFirst'
 
 export class StoreRepository implements IRepository<Store> {
   private readonly collectionName = 'stores'
@@ -18,7 +17,7 @@ export class StoreRepository implements IRepository<Store> {
   }
 
   async find (params: Builder<Store>): Promise<Store[]> {
-    const store = await buildQueryFirst(this.db(this.collectionName),
+    const store = buildQuery(this.db(this.collectionName),
       addWhere('id', params?.where?.id),
       addWhere('name', params?.where?.name),
       addWhere('officialName', params?.where?.officialName),
@@ -37,7 +36,9 @@ export class StoreRepository implements IRepository<Store> {
       addWhere('createdAt', params?.where?.createdAt),
       addWhere('updatedAt', params?.where?.updatedAt)
     )
-    return store
+
+    console.log(store.toQuery())
+    return await store
   }
 
   async update (entity: Store, params: Builder<Store>): Promise<void> {

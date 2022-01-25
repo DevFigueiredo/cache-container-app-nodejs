@@ -11,10 +11,10 @@ export class CreateStoreController {
     this.deleteStoresUseCase = deleteStoresUseCase
   }
 
+  @route('/:id')
   @DELETE()
   async execute (request: Request, response: Response): Promise<Response> {
-    const params = request.query as any
-    await this.deleteStoresUseCase.execute({ params, entity: undefined })
+    await this.deleteStoresUseCase.execute({ params: { id: request.params.id }, entity: undefined })
     return response.status(HttpStatusHelper.NoContent).end()
   }
 }
