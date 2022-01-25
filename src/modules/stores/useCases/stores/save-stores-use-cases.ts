@@ -12,7 +12,7 @@ export class SaveStoresUseCase implements IUseCase<Store, undefined, void> {
   }
 
   async execute ({ entity }: IExecuteUseCase<Store, undefined>): Promise<void> {
-    void this.uploadImageBase64(entity)
+    await this.uploadImageBase64(entity)
     await this.storeRepository.save(entity)
   }
 
