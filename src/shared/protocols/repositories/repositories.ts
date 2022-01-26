@@ -6,3 +6,10 @@ export interface IRepository<Entity> {
   delete: (params: Builder<Entity>) => Promise<void>
   save: (params: Entity) => Promise<void>
 }
+
+export interface IRepositoryCache<Param, Entity> {
+  find: (key: Param) => Promise<Entity[]>
+  update: (key: Param, value: Entity) => Promise<void>
+  delete: (key: Param) => Promise<void>
+  save: (key: Param, value: Entity) => Promise<void>
+}
