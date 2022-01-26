@@ -8,7 +8,7 @@ export interface IRepository<Entity> {
 }
 
 export interface IRepositoryCache<Param, Entity> {
-  find: (key: Param) => Promise<Entity[]>
+  find: (key: Param) => Promise<Entity>
   update: (key: Param, value: Entity) => Promise<void>
   delete: (key: Param) => Promise<void>
   save: (key: Param, value: Entity) => Promise<void>

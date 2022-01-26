@@ -14,8 +14,7 @@ export class FindStoreController {
   @route('/:id')
   @GET()
   async execute (request: Request, response: Response): Promise<Response> {
-    const params = request.query as Pick<Store, 'id'>
-    const store = await this.findByIdStoresUseCase.execute({ params, entity: undefined })
+    const store = await this.findByIdStoresUseCase.execute({ params: { id: request.params.id }, entity: undefined })
     return response.status(HttpStatusHelper.OK).json(store)
   }
 }

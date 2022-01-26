@@ -11,11 +11,10 @@ export class StoreCacheRepository implements IRepositoryCache<string, Store> {
     this.dbCache = dbCache
   }
 
-  async find (key: string): Promise<Store[]> {
+  async find (key: string): Promise<Store> {
     const syncGetRedis = promisify(this.dbCache.get).bind(this.dbCache)
     const finded: any = await syncGetRedis(`${this.collectionName}-${key}`)
-    if (finded) return JSON.parse(finded) as Store[]
-    else return []
+    return JSON.parse(finded) as Store
   }
 
   async update (key: string, value: Store): Promise<void> {
