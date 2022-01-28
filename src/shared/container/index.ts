@@ -1,7 +1,7 @@
 import { createContainer, asClass, asValue } from 'awilix'
 import { CreateStoreController } from '../../controllers/stores/create-store-controller'
 import { StoreRepository } from '../../modules/stores/infra/knex/repositories/stores/stores-repository-mysql'
-import { RedisRepository } from '../../modules/stores/infra/redis/stores/redis-repository'
+import { RedisRepository } from '../../modules/stores/infra/redis/cache/redis-repository'
 import { DeleteStoresUseCase } from '../../modules/stores/useCases/stores/delete-stores-use-cases'
 import { FindByIdStoresUseCase } from '../../modules/stores/useCases/stores/find-by-id-stores-use-cases'
 import { FindStoresUseCase } from '../../modules/stores/useCases/stores/find-stores-use-cases'
