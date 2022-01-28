@@ -1,6 +1,7 @@
 import { GET, route } from 'awilix-express'
 import { Request, Response } from 'express'
 import { Store } from '../../shared/domain/store'
+import { CacheAPI } from '../../shared/helpers/cacheAPI'
 import { HttpStatusHelper } from '../../shared/helpers/http-status-helper'
 import { IUseCase } from '../../shared/protocols/useCases/use-cases'
 
@@ -11,6 +12,7 @@ export class FindStoreController {
     this.findStoresUseCase = findStoresUseCase
   }
 
+  @CacheAPI(60)
   @GET()
   async execute (request: Request, response: Response): Promise<Response> {
     const params = request.query as unknown as Store

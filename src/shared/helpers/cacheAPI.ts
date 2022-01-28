@@ -3,14 +3,14 @@ import { container } from '../container'
 import { IRepositoryCache } from '../protocols/repositories/repositories'
 import { DateTime } from 'luxon'
 
-export function cacheAPI (time: number): any {
+export function CacheAPI (time: number): Function {
   return (_: any, __: string, descriptor: PropertyDescriptor) => {
     const originalFunction = descriptor.value
     descriptor.value = async function (...args: any) {
       const repositoryCache: IRepositoryCache<string, any> = container.resolve('redisRepository')
       const request: Request = args[0]
       const response: Response = args[1]
-      const path = request.path
+      const path = request.url
       const cacheDateTimeMax = await repositoryCache.find(`datetime-${path}`)
       const now = DateTime.now().toSeconds()
 
