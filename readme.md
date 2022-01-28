@@ -1,5 +1,4 @@
-# Data Structure Concepts NodeJS with Typescript
-
+# Aplicação Backend - Cache / SOLID / Clean Code
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
 Criar aplicação backend, utilizando conceitos de clean code e apllicação de alguns conceitos do S.O.L.I.D. Além disto, aplicado pratica em utilização de containerização singleton das classes backend e camada de cache utilizando Redis!
