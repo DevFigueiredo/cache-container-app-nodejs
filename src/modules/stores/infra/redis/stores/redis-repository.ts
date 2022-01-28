@@ -14,7 +14,7 @@ export class RedisRepository implements IRepositoryCache<string, Store> {
   async find (key: string): Promise<Store> {
     const syncGetRedis = promisify(this.dbCache.get).bind(this.dbCache)
     const finded: any = await syncGetRedis(`${this.collectionName}-${key}`)
-    return finded
+    return finded && JSON.parse(finded) as Store
   }
 
   async update (key: string, value: Store): Promise<void> {
@@ -27,8 +27,8 @@ export class RedisRepository implements IRepositoryCache<string, Store> {
     await syncDelRedis(key)
   }
 
-  async save (key: string, value: any): Promise<void> {
+  async save (key: string, value: Store): Promise<void> {
     const syncSetRedis = promisify(this.dbCache.set).bind(this.dbCache)
-    await syncSetRedis(`${this.collectionName}-${key}`, value)
+    await syncSetRedis(`${this.collectionName}-${key}`, JSON.stringify(value))
   }
 }
