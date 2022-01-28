@@ -13,6 +13,7 @@ export function cacheAPI (time: number): any {
       const path = request.path
       const cacheDateTimeMax = await repositoryCache.find(`datetime-${path}`)
       const now = DateTime.now().toSeconds()
+
       if (cacheDateTimeMax < now) {
         await repositoryCache.save(path, undefined as any)
         await repositoryCache.save(`datetime-${path}`, undefined as any)
@@ -22,7 +23,6 @@ export function cacheAPI (time: number): any {
 
       if (cache) {
         response.status(200).json(cache)
-        return descriptor
       }
 
       if (!cache) {
@@ -34,7 +34,7 @@ export function cacheAPI (time: number): any {
               seconds: Number(time)
             }).toSeconds())
             return oldJSON.call(response, data)
-          } else { response.json = oldJSON }
+          }
         }
         await originalFunction.apply(this, args)
       }
