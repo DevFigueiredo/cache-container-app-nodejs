@@ -8,6 +8,7 @@ const storesApp = express()
 
 storesApp.use(json())
 storesApp.use(cors())
+storesApp.use('/uploads/images', express.static('uploads/images'))
 
 storesApp.use(scopePerRequest(container))
 storesApp.use(loadControllers('./../controllers/stores/*.ts', { cwd: __dirname }))

@@ -1,7 +1,7 @@
 import { GET, route } from 'awilix-express'
 import { Request, Response } from 'express'
 import { Store } from '../../shared/domain/store'
-import { CacheAPI } from '../../shared/helpers/cacheAPI'
+import { CacheAPI } from '../../shared/helpers/cache-api'
 import { HttpStatusHelper } from '../../shared/helpers/http-status-helper'
 import { IUseCase } from '../../shared/protocols/useCases/use-cases'
 
@@ -17,7 +17,6 @@ export class FindStoreController {
   @GET()
   async execute (request: Request, response: Response): Promise<Response> {
     const store = await this.findByIdStoresUseCase.execute({ params: { id: request.params.id }, entity: undefined })
-    console.log('Passou pelo controller')
     return response.status(HttpStatusHelper.OK).json(store)
   }
 }
