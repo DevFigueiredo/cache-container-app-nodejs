@@ -1,6 +1,6 @@
 
 export interface IExecuteUseCase<Body, Param> {
-  entity: Body
+  entity?: Body
   params?: Param
 }
 export interface IUseCase<Body, Param, Response> {

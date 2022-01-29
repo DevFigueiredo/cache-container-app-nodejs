@@ -16,7 +16,7 @@ export class FindStoreController {
   @GET()
   async execute (request: Request, response: Response): Promise<Response> {
     const params = request.query as unknown as Store
-    const store = await this.findStoresUseCase.execute({ params, entity: undefined })
+    const store = await this.findStoresUseCase.execute({ params })
     return response.status(HttpStatusHelper.OK).json(store)
   }
 }
