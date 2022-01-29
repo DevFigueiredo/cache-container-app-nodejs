@@ -1,5 +1,5 @@
 import { createContainer, asClass, asValue } from 'awilix'
-import { CreateStoreController } from '../../controllers/stores/create-store-controller'
+import { CreateStoreController } from '../infra/http/controllers/awilix-express/stores/create-store-controller'
 import { StoreRepository } from '../../modules/stores/infra/knex/repositories/stores/stores-repository-mysql'
 import { RedisRepository } from '../../modules/stores/infra/redis/redis-repository'
 import { FindCacheUseCases } from '../../modules/stores/useCases/cache/find-cache-use-cases'

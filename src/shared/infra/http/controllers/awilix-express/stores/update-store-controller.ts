@@ -1,8 +1,8 @@
 import { PATCH, route } from 'awilix-express'
 import { Request, Response } from 'express'
-import { Store } from '../../shared/domain/store'
-import { HttpStatusHelper } from '../../shared/helpers/http-status-helper'
-import { IUseCase } from '../../shared/protocols/useCases/use-cases'
+import { Store } from '../../../../../domain/store'
+import { HttpStatusHelper } from '../../../../../helpers/http-status-helper'
+import { IUseCase } from '../../../../../protocols/useCases/use-cases'
 
 @route('/stores')
 export class CreateStoreController {

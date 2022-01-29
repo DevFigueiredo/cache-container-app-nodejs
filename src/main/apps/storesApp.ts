@@ -2,8 +2,8 @@ import express, { json } from 'express'
 import cors from 'cors'
 
 import { loadControllers, scopePerRequest } from 'awilix-express'
-import { errorsMiddleware } from '../shared/infra/http/middlewares/errors-middlewares'
-import { container } from '../shared/container'
+import { errorsMiddleware } from '../../shared/infra/http/middlewares/errors-middlewares'
+import { container } from '../../shared/container'
 const storesApp = express()
 
 storesApp.use(json())
