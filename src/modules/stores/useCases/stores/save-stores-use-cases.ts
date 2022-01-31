@@ -4,7 +4,7 @@ import { IRepository } from '../../../../shared/protocols/repositories/repositor
 import { IUploadImage } from '../../../../shared/protocols/repositories/uploadImage'
 import { IExecuteUseCase, IUseCase } from '../../../../shared/protocols/useCases/use-cases'
 
-export class SaveStoresUseCase implements IUseCase<Store, undefined, void> {
+export class SaveStoresUseCase implements IUseCase<Store, undefined, string> {
   private readonly storeRepository: IRepository<Store>
   private readonly uploadImage: IUploadImage
 
@@ -13,10 +13,11 @@ export class SaveStoresUseCase implements IUseCase<Store, undefined, void> {
     this.uploadImage = uploadImage
   }
 
-  async execute ({ entity }: IExecuteUseCase<Store, undefined>): Promise<void> {
+  async execute ({ entity }: IExecuteUseCase<Store, undefined>): Promise<string> {
     entity.id = generateUUID()
     await this.uploadImageBase64(entity)
     await this.storeRepository.save(entity)
+    return entity.id
   }
 
   private async uploadImageBase64 (entity: Store): Promise<void> {

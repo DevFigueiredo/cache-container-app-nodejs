@@ -12,6 +12,7 @@ import { UpdateStoresUseCase } from '../../modules/stores/useCases/stores/update
 import { UploadImage } from '../helpers/upload-image'
 import { connectKnexDatabase } from '../infra/database/knex/index'
 import { connectRedisDatabase } from '../infra/database/redis'
+import { CreateStoreControllerGRPC } from '../infra/http/controllers/grpc/stores/create-store-controller'
 export const register = {
   // utils
   db: asValue(connectKnexDatabase),
@@ -19,6 +20,7 @@ export const register = {
 
   // controllers
   createStoreController: asClass(CreateStoreController).singleton(),
+  createStoreControllerGRPC: asClass(CreateStoreControllerGRPC).singleton(),
 
   // use cases
   findStoresUseCase: asClass(FindStoresUseCase).singleton(),

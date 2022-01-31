@@ -4,10 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@grpc/grpc-js": "^1.5.3",
+    "@grpc/proto-loader": "^0.6.9",
     "awilix": "^6.0.0",
     "awilix-express": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "google-protobuf": "^3.19.4",
     "ioredis": "^4.28.3",
     "knex": "^0.95.15",
     "luxon": "^2.3.0",
