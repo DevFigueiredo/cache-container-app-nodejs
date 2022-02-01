@@ -11,6 +11,9 @@ Criar aplicação backend, utilizando conceitos de clean code e apllicação de 
 - [x] Criar containers com instâncias singleton
 - [x] Utilizar docker compose para levantar banco e de dados Redis
 - [x] Upload de imagem
+- [x] Criar estrutura de comunicação de microserviço por GRPC
+- [ ] Incluir comunicação por cliente GRPC para se comunicar com outro microserviço
+- [ ] Criar estrutura Kubernets
 
 ### Ajustes e Melhoria
 - [ ] Desacoplcar o modulo de cache para uma bilioteca npm
