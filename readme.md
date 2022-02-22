@@ -32,7 +32,6 @@ Verifique se você atendeu aos seguintes requisitos:
 * Você precisa instalar a versão mais recente de `<Node JS>`
 * Sistemas `<Windows / Linux / Mac>`.
 
-
 ## 🚀 Instalando <cache-container-app-nodejs>
 
 Obs.: É necessário antes de instalar este projeto, ter instalado e rodando o docker:
